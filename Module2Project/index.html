@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Airline Chris</title>
+
+    <!-- JQuery -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+     <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
+     <link rel="stylesheet" type="text/css" href="anytime.5.1.2.min.css">
+
+
+
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>        
+          <div id="" class="">
+            <nav class="navbar navbar-inverse app-navbar">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+
+                  <a class="navbar-brand" href="#"><span id="logoSpan"></span> Airlines <i class="fa fa-paper-plane"></i></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <ul class="nav navbar-nav">
+                    <li class="ghost-navbar"><a href="#" id="btnViewPlanes">Planes</a></li>
+                    <li class="ghost-navbar"><a href="#" id="btnViewEditTickets">Add tickets</a></li>
+                    <li class="ghost-navbar"><a href="#" id="btnViewEditPlanes">Add planes</a></li>
+                </ul>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="ghost-navbar"><a id="btnUserProfile" href="#"></a></li>
+                    <li class="ghost-navbar"><a id="btnLogIn" href="#"></a></li>
+                    
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>              
+          </div>
+        
+          <div id="wdw-signup" class="wdw signup wdwLogSign">
+            <h1>Signup</h1>
+            <div id="alertWarnSign" class="alert alert-warning" role="alert">!Some  fields are missing!</div>
+            <div id="alertDangSign" class="alert alert-danger" role="alert">!Username already taken!</div>
+            <input id="lblSignUsername" type="text" placeholder="username" required="required" />
+            <input id="lblSignEmail" type="text" placeholder="email" required="required" />
+            <input id="lblSignMobile" type="text" placeholder="mobile" required="required" />
+            <input id="lblSignPassword" type="password" placeholder="password" required="required" />
+            <button id="btnSignup" type="button" class="btn btn-primary btn-block btn-large"><i class="fa fa-user-plus"></i></button>
+
+            <button id="btnLoginTrans" type="button" class="btn btn-danger btn-block btn-large"><i class="fa fa-arrow-left"></i></button>
+          </div>
+
+          <div id="wdw-login" class="wdw login wdwLogSign">
+
+            <h1>Login</h1>
+            <div id="alertWarnLog" class="alert alert-warning" role="alert">!One of the fields are empty!</div>
+            <div id="alertDangLog" class="alert alert-danger" role="alert">!Wrong login!</div>
+            <input id="lblUsername" type="text" name="u" placeholder="username"  />
+            <input id="lblPassword" type="password" name="p" placeholder="password" />
+            <button id="btnLogin" type="button" class="btn btn-primary btn-block btn-large"><i class="fa fa-sign-in"></i></button>
+            <button id="btnSignupTrans" type="button" class="btn btn-success btn-block btn-large"><i class="fa fa-plus"></i></button>
+          </div>
+
+          <h1 id="lblNameTag"><span></span></h1>
+
+
+          <div id="wdw-planes" class="col-md-12 wdw">
+          
+            <div class=" wdwTable col-md-12">
+              <h3 class="tableH">Planes</h3>
+              <div style="height:450px;overflow-y:scroll;">
+                <table id="planesTable">
+                    <thead>
+                      <tr>
+                        <th>plane type</th>
+                        <th>reg id</th>
+                        <th>from</th>
+                        <th>to</th>
+                        <th>departure</th>
+                        <th>arrival</th>
+                        <th>price</th>
+                        <th>buy</th>
+                      </tr>
+                    </thead>
+                    <tbody >
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+            <br>
+            
+            <div class=" wdwTable col-md-12">
+              <h3 class="tableH">Bought Tickets</h3>
+              <div style="height:200px;overflow-y:scroll;">
+                <table id="ticketTable">
+                    <thead>
+                      <tr>
+                        <th>name</th>
+                        <th>from</th>
+                        <th>to</th>
+                        <th>departure</th>
+                        <th>arrival</th>
+                        <th>sell back</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+
+          <div id="wdw-tickets" class="col-md-12 wdw">
+          
+          </div>
+
+          <div id="wdw-payment" class="wdw login wdwLogSign">
+
+            <h1>Payment</h1>
+            <div id="alertWarnLog" class="alert alert-warning" role="alert">!One of the fields are empty!</div>
+            <input id="lblCardName" type="text" name="u" placeholder="card holder's name"  />
+            <input id="lblCardnumber" type="password" name="p" placeholder="cardnumber" />
+            <input id="lblCVV" type="password" name="p" placeholder="CVV" />
+
+            <select id="lblCardMonth" class="form-control" type="text" placeholder="month" required="required">
+
+                    <option value="" disabled selected>month</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+
+            </select>
+            <select id="lblCardYear" class="form-control" type="text" placeholder="year" required="required">
+
+                    <option value="" disabled selected>year</option>
+                    <option value="15">2015</option>
+                    <option value="16">2016</option>
+                    <option value="17">2017</option>
+                    <option value="18">2018</option>
+                    <option value="19">2019</option>
+                    <option value="20">2020</option>
+                    <option value="21">2021</option>
+                    <option value="22">2022</option>
+                    <option value="23">2023</option>
+                    <option value="24">2024</option>
+                    <option value="25">2025</option>
+
+                </select>
+            </br>
+            <button id="btnConfirmPay" type="button" class="btn btn-primary btn-block btn-large"><i class="fa fa-credit-card"></i></button>
+          </div>
+
+
+          <div id="wdw-about" class="wdw">
+
+            <div class="col-md-12">
+              <div id="" class="">
+                <h3 class="tableH">Profile</h3>
+                <input id="lblMyUsername" type="text" required="required" placeholder="new username"/>
+                <input id="lblMyPassword" type="text" required="required" placeholder="new password"/>
+                <input id="lblMyEmail" type="text" required="required" placeholder="new email"/>
+                <input id="lblMyMobile" type="text" required="required" placeholder="new mobilenumber"/>
+                <button id="btnSaveProfile" type="button" class="btn btn-primary btn-block btn-large">save profile</button>
+                <button id="btnDeleteProfile" type="button" class="btn btn-danger btn-block btn-large">delete profile</button>
+              </div>
+            </div> 
+          </div>
+
+          <div id="wdw-editTicket" class="wdw">
+
+            <div class="col-md-12">
+              <div id="" class="">
+                <h3>Add tickets</h3>
+                <input id="lblNewTicketFrom" type="text" required="required" placeholder="From"/>
+                <input id="lblNewTicketTo" type="text" required="required" placeholder="To"/>
+                <input id="lblDepTime" type="text" required="required" placeholder="departure"/>
+                <input id="lblArrTime" type="text" required="required" placeholder="Arrival"/>
+                <input id="lblNewTicketPrice" type="number" required="required" placeholder="Price"/>
+
+                <select id="lblNewTicketPlane" class="form-control" type="text" placeholder="plane" required="required">
+
+                    <option value="" disabled selected>plane</option>
+
+                </select>
+                </br>
+                <button id="btnAddTicket" type="button" class="btn btn-primary btn-block btn-large">add ticket</button>
+              </div>
+            </div> 
+          </div> 
+
+
+
+
+          <div id="wdw-editEditTicket" class="wdw">
+
+            <div class="col-md-12">
+              <div id="" class="">
+                <h3>Edit tickets</h3>
+                <input id="lblEditNewTicketFrom" type="text" required="required" placeholder="From"/>
+                <input id="lblEditNewTicketTo" type="text" required="required" placeholder="To"/>
+                <input id="lblEditDepTime" type="text" required="required" placeholder="departure"/>
+                <input id="lblEditArrTime" type="text" required="required" placeholder="Arrival"/>
+                <input id="lblEditNewTicketPrice" type="number" required="required" placeholder="Price"/>
+
+                <select id="lblEditNewTicketPlane" class="form-control" type="text" placeholder="plane" required="required">
+
+                    <!-- <option value="" selected>plane</option> -->
+
+                </select>
+                </br>
+                <button id="btnEditTicket" type="button" class="btn btn-primary btn-block btn-large">Edit ticket</button>
+              </div>
+            </div> 
+          </div>
+
+
+
+          <div id="wdw-editPlane" class="wdw">
+
+            <div class="col-md-12">
+              <div id="" class="">
+                <h3>Add plane</h3>
+                <input id="lblNewPlaneReg" type="text" required="required" placeholder="register number (8 max)"/>
+                <select id="lblNewPlaneType" class="form-control" type="text" placeholder="plane type" required="required">
+
+                    <option value="" disabled selected>plane type</option>
+
+                </select>
+                </br>
+                <button id="btnAddPlane" type="button" class="btn btn-primary btn-block btn-large">add plane</button>
+              </div>
+            </div> 
+          </div>  
+
+
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
+
+    <script src="anytime.5.1.2.min.js"></script>
+    <script src="anytimetz.5.1.2.js"></script>
+
+
+
+     <script src="index.js"></script>
+
+      
+
+
+<!--         <form method="post" action="http://www.ckrolmark.com/cgi-bin/FormMail.pl" 
+        accept-charset="ISO-8859-1" onsubmit="var originalCharset = document.charset; 
+        document.charset = 'ISO-8859-1'; 
+        window.onbeforeunload = function () {document.charset=originalCharset;};">
+          Navn
+          <br />
+          <input name="realname" />
+          <br />
+          E-mail
+          <br />
+          <input name="email" />
+          <br />
+          Meddelelse
+          <br />
+          <textarea cols="40" rows="10" name="Message"></textarea>
+          <br />
+          <input type="submit" value="Send" />
+          <input type="hidden" name="recipient" value="krolmark@ckrolmark.com" />
+          <input type="hidden" name="subject" value="Subject" />
+          <input type="hidden" name="redirect" 
+          value="http://www.ckrolmark.com/Module2Project/tak.html" />
+          <input type="hidden" name="missing_fields_redirect" 
+          value="http://www.ckrolmark.com/Module2Project/fejl.html" />
+          <input type="hidden" name="required" value="realname,email,Message" />
+        </form> -->
+
+
+
+    <script type="text/javascript">
+    // $.get("person.xml", function(sData){
+    //   console.log(sData);
+    // });
+
+
+    </script>
+
+
+  </body>
+</html>
